@@ -50,31 +50,31 @@ def send_tplmsg(request):
     tpl_data = {
         'first': {
             'value': data.get('title', u'服务器故障'),
-            'color': '#173177',
+            'color': data.get('color', u'#173177'),
         },
         'ip': {
             'value': data.get('ip', '127.0.0.1'),
-            'color': '#173177',
+            'color': data.get('color', u'#173177'),
         },
         'type': {
             'value': data.get('type', u'服务器故障'),
-            'color': '#173177',
+            'color': data.get('color', u'#173177'),
         },
         'descr': {
             'value': data.get('descr', u'服务器故障'),
-            'color': '#173177',
+            'color': data.get('color', u'#173177'),
         },
         'detail': {
             'value': data.get('detail', u'服务器故障'),
-            'color': '#173177',
+            'color': data.get('color', u'#173177'),
         },
         'time': {
-            'value': tc.local_string(),
-            'color': '#173177',
+            'value': data.get('time', tc.local_string()),
+            'color': data.get('color', u'#173177'),
         },
         'remark': {
             'value': data.get('remark', u'请尽快处理！'),
-            'color': '#173177',
+            'color': data.get('color', u'#173177'),
         },
     }
     tplmsg = TemplateMessage(appid=tpl.app_id, secret=tpl.app_secret, storage=RedisStorage(r))

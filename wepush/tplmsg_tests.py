@@ -20,7 +20,9 @@ def send_tplmsg(key):
         'type': u'微信提现',
         'descr': u'余额发放失败',
         'detail': u'余额不足，错误码: NOTENOUGH',
-        'remark': u'请尽快充值！'
+        'time': '',
+        'remark': u'请尽快充值！',
+        'color': '#173177',
     }
 
     data = fill_signature(data, tpl.wepush_secret)
@@ -28,4 +30,4 @@ def send_tplmsg(key):
     requrl = '{}/api/send/tplmsg?text={}'.format(settings.DOMAIN, json.dumps(data))
     print requrl
 
-    requests.get(requrl)
+    print requests.get(requrl).json()
