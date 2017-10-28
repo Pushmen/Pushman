@@ -47,34 +47,35 @@ def send_tplmsg(request):
     if not receivers.exists():
         return response(WeChatTemplateStatusCode.RECEIVER_NOT_FOUND)
 
+    color = data.get('color', u'#173177')
     tpl_data = {
         'first': {
             'value': data.get('title', u'服务器故障'),
-            'color': data.get('color', u'#173177'),
+            'color': color,
         },
         'ip': {
             'value': data.get('ip', '127.0.0.1'),
-            'color': data.get('color', u'#173177'),
+            'color': color,
         },
         'type': {
             'value': data.get('type', u'服务器故障'),
-            'color': data.get('color', u'#173177'),
+            'color': color,
         },
         'descr': {
             'value': data.get('descr', u'服务器故障'),
-            'color': data.get('color', u'#173177'),
+            'color': color,
         },
         'detail': {
             'value': data.get('detail', u'服务器故障'),
-            'color': data.get('color', u'#173177'),
+            'color': color,
         },
         'time': {
             'value': data.get('time', tc.local_string()),
-            'color': data.get('color', u'#173177'),
+            'color': color,
         },
         'remark': {
             'value': data.get('remark', u'请尽快处理！'),
-            'color': data.get('color', u'#173177'),
+            'color': color,
         },
     }
     tplmsg = TemplateMessage(appid=tpl.app_id, secret=tpl.app_secret, storage=RedisStorage(r))
