@@ -17,7 +17,7 @@ from wepush.models import (WeChatTemplateInfo, WeChatTemplateMessageRequestLogIn
 
 
 def send_tplmsg(request):
-    """ key + title/ip/type/descr/detail/remark + sign """
+    """ push_id + title/ip/type/descr/detail/time/remark/color + sign """
     text = request.POST.get('text', '') or request.GET.get('text', '')
 
     if not text:
@@ -25,7 +25,8 @@ def send_tplmsg(request):
 
     data = json.loads(text)
 
-    wepush_id = data.get('key', '')
+    # Key for back compatibility
+    wepush_id = data.get('push_id', '') or data.get('key', '')
 
     reqlog = WeChatTemplateMessageRequestLogInfo.objects.create(
         wepush_id=wepush_id,

@@ -11,11 +11,11 @@ from pywe_sign import fill_signature
 from wepush.models import WeChatTemplateInfo
 
 
-def send_tplmsg(key):
-    tpl = WeChatTemplateInfo.objects.get(wepush_id=key)
+def send_tplmsg(push_id):
+    tpl = WeChatTemplateInfo.objects.get(wepush_id=push_id)
 
     data = {
-        'key': key,
+        'push_id': push_id,
         'title': u'提现故障',
         'ip': '127.0.0.1',
         'type': u'微信提现',
