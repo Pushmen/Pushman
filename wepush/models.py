@@ -8,8 +8,8 @@ from pushman.basemodels import CreateUpdateMixin
 
 
 class WeChatTemplateInfo(CreateUpdateMixin):
-    wepush_id = ShortUUIDField(_(u'wepush_id'), max_length=255, help_text=u'模板唯一标识', db_index=True, unique=True)
-    wepush_secret = ShortUUIDField(_(u'wepush_secret'), max_length=255, help_text=u'模板消息密钥', db_index=True)
+    wepush_id = ShortUUIDField(_(u'wepush_id'), max_length=32, help_text=u'模板唯一标识', db_index=True, unique=True)
+    wepush_secret = ShortUUIDField(_(u'wepush_secret'), max_length=32, help_text=u'模板消息密钥', db_index=True)
     app_id = models.CharField(_(u'app_id'), max_length=255, help_text=u'开发者ID', db_index=True)
     app_secret = models.CharField(_(u'app_secret'), max_length=255, help_text=u'开发者密钥', db_index=True)
     template_id = models.CharField(_(u'template_id'), max_length=255, help_text=u'模板ID', db_index=True)
@@ -23,8 +23,8 @@ class WeChatTemplateInfo(CreateUpdateMixin):
 
 
 class WeChatTemplateReceiverInfo(CreateUpdateMixin):
-    receiver_id = ShortUUIDField(_(u'receiver_id'), max_length=255, help_text=u'接收人唯一标识', db_index=True, unique=True)
-    wepush_id = models.CharField(_(u'wepush_id'), max_length=255, help_text=u'模板唯一标识', db_index=True)
+    receiver_id = ShortUUIDField(_(u'receiver_id'), max_length=32, help_text=u'接收人唯一标识', db_index=True, unique=True)
+    wepush_id = models.CharField(_(u'wepush_id'), max_length=32, help_text=u'模板唯一标识', db_index=True)
     openid = models.CharField(_(u'openid'), max_length=255, blank=True, null=True, help_text=u'接受者Openid', db_index=True)
 
     class Meta:
@@ -36,9 +36,9 @@ class WeChatTemplateReceiverInfo(CreateUpdateMixin):
 
 
 class WeChatTemplateMessageRequestLogInfo(CreateUpdateMixin):
-    request_id = ShortUUIDField(_(u'request_id'), max_length=255, help_text=u'请求唯一标识', db_index=True, unique=True)
-    wepush_id = models.CharField(_(u'wepush_id'), max_length=255, help_text=u'模板唯一标识', db_index=True)
-    request_ip = models.CharField(_(u'request_ip'), max_length=255, blank=True, null=True, help_text=u'请求IP')
+    request_id = ShortUUIDField(_(u'request_id'), max_length=32, help_text=u'请求唯一标识', db_index=True, unique=True)
+    wepush_id = models.CharField(_(u'wepush_id'), max_length=32, help_text=u'模板唯一标识', db_index=True)
+    request_ip = models.GenericIPAddressField(_(u'request_ip'), blank=True, null=True, help_text=u'请求IP')
     request_text = models.TextField(_(u'request_text'), blank=True, null=True, help_text=u'请求文本')
     request_sign_status = models.BooleanField(_(u'request_sign_status'), default=True, help_text=u'请求签名状态')
 
@@ -51,8 +51,8 @@ class WeChatTemplateMessageRequestLogInfo(CreateUpdateMixin):
 
 
 class WeChatTemplateMessageSendLogInfo(CreateUpdateMixin):
-    send_id = ShortUUIDField(_(u'send_id'), max_length=255, help_text=u'发送唯一标识', db_index=True, unique=True)
-    wepush_id = models.CharField(_(u'wepush_id'), max_length=255, help_text=u'模板唯一标识', db_index=True)
+    send_id = ShortUUIDField(_(u'send_id'), max_length=32, help_text=u'发送唯一标识', db_index=True, unique=True)
+    wepush_id = models.CharField(_(u'wepush_id'), max_length=32, help_text=u'模板唯一标识', db_index=True)
     openid = models.CharField(_(u'openid'), max_length=255, blank=True, null=True, help_text=u'接受者Openid', db_index=True)
     send_msgres = models.TextField(_(u'send_msgres'), blank=True, null=True, help_text=u'发送回执')
     send_status = models.BooleanField(_(u'send_status'), default=True, help_text=u'发送状态')
