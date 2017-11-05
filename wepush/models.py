@@ -13,6 +13,7 @@ class WeChatTemplateInfo(CreateUpdateMixin):
     app_id = models.CharField(_(u'app_id'), max_length=255, help_text=u'开发者ID', db_index=True)
     app_secret = models.CharField(_(u'app_secret'), max_length=255, help_text=u'开发者密钥', db_index=True)
     template_id = models.CharField(_(u'template_id'), max_length=255, help_text=u'模板ID', db_index=True)
+    token_url = models.URLField(_(u'token_url'), blank=True, null=True, help_text=u'获取access_token链接')
 
     class Meta:
         verbose_name = _(u'wechattemplateinfo')

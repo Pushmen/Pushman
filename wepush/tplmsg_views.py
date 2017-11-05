@@ -12,6 +12,7 @@ from TimeConvert import TimeConvert as tc
 from utils.error.errno_utils import SignatureStatusCode, WeChatTemplateStatusCode
 from utils.error.response_utils import response
 from utils.redis.connect import r
+from utils.we.access_token import fetch_access_token
 from wepush.models import (WeChatTemplateInfo, WeChatTemplateMessageRequestLogInfo, WeChatTemplateMessageSendLogInfo,
                            WeChatTemplateReceiverInfo)
 
@@ -80,7 +81,7 @@ def send_tplmsg(request):
         },
     }
 
-    tplmsg = TemplateMessage(appid=tpl.app_id, secret=tpl.app_secret, storage=RedisStorage(r))
+    tplmsg = TemplateMessage(appid=tpl.app_id, secret=tpl.app_secret, token=fetch_access_token(tpl.token_url), storage=RedisStorage(r))
 
     success = failure = 0
     for receiver in receivers:

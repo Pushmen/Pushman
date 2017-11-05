@@ -9,13 +9,14 @@ from wepush.models import (WeChatTemplateInfo, WeChatTemplateMessageRequestLogIn
 
 
 class WeChatTemplateInfoAdmin(ReadonlyModelAdmin, admin.ModelAdmin):
-    list_display = ('wepush_id', 'wepush_secret', 'app_id', 'app_secret', 'template_id', 'status', 'created_at', 'updated_at')
+    list_display = ('wepush_id', 'wepush_secret', 'app_id', 'app_secret', 'template_id', 'token_url', 'status', 'created_at', 'updated_at')
     list_filter = ('template_id', 'status')
 
     def save_model(self, request, obj, form, change):
         obj.app_id = strip(obj.app_id)
         obj.app_secret = strip(obj.app_secret)
         obj.template_id = strip(obj.template_id)
+        obj.token_url = strip(obj.token_url)
         obj.save()
 
 
