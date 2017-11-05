@@ -78,14 +78,28 @@ def send_tplmsg(request):
             'color': color,
         },
     }
+
     tplmsg = TemplateMessage(appid=tpl.app_id, secret=tpl.app_secret, storage=RedisStorage(r))
+
+    success = failure = 0
     for receiver in receivers:
         msgres = tplmsg.send_template_message(user_id=receiver.openid, template_id=tpl.template_id, data=tpl_data, url=data.get('url', None))
+        # Success Or Not
+        send_status = msgres['errcode'] == 0
+        # TPL Send Log
         WeChatTemplateMessageSendLogInfo.objects.create(
             wepush_id=wepush_id,
             openid=receiver.openid,
             send_msgres=msgres,
-            send_status=msgres['errcode'] == 0,
+            send_status=send_status,
         )
+        # Success/Failure Num Incr
+        if send_status:
+            success += 1
+        else:
+            failure += 1
 
-    return response()
+    return response(200, data={
+        'success': success,
+        'failure': failure,
+    })
