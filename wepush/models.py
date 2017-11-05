@@ -54,6 +54,7 @@ class WeChatTemplateMessageSendLogInfo(CreateUpdateMixin):
     send_id = ShortUUIDField(_(u'send_id'), max_length=255, help_text=u'发送唯一标识', db_index=True, unique=True)
     wepush_id = models.CharField(_(u'wepush_id'), max_length=255, help_text=u'模板唯一标识', db_index=True)
     openid = models.CharField(_(u'openid'), max_length=255, blank=True, null=True, help_text=u'接受者Openid', db_index=True)
+    send_msgres = models.TextField(_(u'send_msgres'), blank=True, null=True, help_text=u'发送回执')
     send_status = models.BooleanField(_(u'send_status'), default=True, help_text=u'发送状态')
 
     class Meta:

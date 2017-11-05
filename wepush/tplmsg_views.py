@@ -84,6 +84,7 @@ def send_tplmsg(request):
         WeChatTemplateMessageSendLogInfo.objects.create(
             wepush_id=wepush_id,
             openid=receiver.openid,
+            send_msgres=msgres,
             send_status=msgres['errcode'] == 0,
         )
 

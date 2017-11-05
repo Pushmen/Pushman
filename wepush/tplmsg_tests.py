@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import json
+import urllib
 
 import requests
 from django.conf import settings
@@ -27,7 +28,7 @@ def send_tplmsg(key):
 
     data = fill_signature(data, tpl.wepush_secret)
 
-    requrl = '{}/api/send/tplmsg?text={}'.format(settings.DOMAIN, json.dumps(data))
+    requrl = '{}/api/send/tplmsg?text={}'.format(settings.DOMAIN, urllib.quote_plus(json.dumps(data)))
     print requrl
 
     print requests.get(requrl).json()

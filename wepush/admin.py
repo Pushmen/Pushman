@@ -35,7 +35,7 @@ class WeChatTemplateMessageRequestLogInfoAdmin(ReadonlyModelAdmin, admin.ModelAd
 
 
 class WeChatTemplateMessageSendLogInfoAdmin(ReadonlyModelAdmin, admin.ModelAdmin):
-    list_display = ('send_id', 'wepush_id', 'openid', 'send_status', 'status', 'created_at', 'updated_at')
+    list_display = ('send_id', 'wepush_id', 'openid', 'send_msgres', 'send_status', 'status', 'created_at', 'updated_at')
     list_filter = ('wepush_id', 'status')
 
 
