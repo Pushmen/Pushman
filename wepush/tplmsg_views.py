@@ -81,7 +81,7 @@ def send_tplmsg(request):
         },
     }
 
-    tplmsg = TemplateMessage(appid=tpl.app_id, secret=tpl.app_secret, token=fetch_access_token(tpl.token_url), storage=RedisStorage(r))
+    tplmsg = TemplateMessage(appid=tpl.app_id, secret=tpl.app_secret, token=fetch_access_token(tpl.token_url, tpl.token_key), storage=RedisStorage(r))
 
     success = failure = 0
     for receiver in receivers:

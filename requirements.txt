@@ -5,7 +5,7 @@ django-ip==1.0.2
 django-rlog==1.0.7
 django-shortuuidfield==0.1.3
 django-uniapi==1.0.0
-django-we==1.0.14
+django-we==1.0.15
 mock==2.0.0
 mysqlclient==1.3.12
 pysnippets==1.0.4

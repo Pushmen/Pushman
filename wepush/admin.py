@@ -9,8 +9,9 @@ from wepush.models import (WeChatTemplateInfo, WeChatTemplateMessageRequestLogIn
 
 
 class WeChatTemplateInfoAdmin(ReadonlyModelAdmin, admin.ModelAdmin):
-    list_display = ('wepush_id', 'wepush_secret', 'app_id', 'app_secret', 'template_id', 'token_url', 'status', 'created_at', 'updated_at')
+    list_display = ('wepush_id', 'wepush_secret', 'app_id', 'app_secret', 'template_id', 'token_url', 'token_key', 'status', 'created_at', 'updated_at')
     list_filter = ('template_id', 'status')
+    readonly_fields_exclude = ('token_url', 'token_key')
 
     def save_model(self, request, obj, form, change):
         obj.app_id = strip(obj.app_id)
