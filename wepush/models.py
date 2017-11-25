@@ -10,7 +10,7 @@ from pushman.basemodels import CreateUpdateMixin
 class WeChatTemplateInfo(CreateUpdateMixin):
     wepush_id = ShortUUIDField(_(u'wepush_id'), max_length=32, help_text=u'模板唯一标识', db_index=True, unique=True)
     wepush_secret = ShortUUIDField(_(u'wepush_secret'), max_length=32, help_text=u'模板消息密钥', db_index=True)
-    wepush_remark = ShortUUIDField(_(u'wepush_remark'), max_length=32, blank=True, null=True, help_text=u'模板消息备注')
+    wepush_remark = models.CharField(_(u'wepush_remark'), max_length=32, blank=True, null=True, help_text=u'模板消息备注')
     app_id = models.CharField(_(u'app_id'), max_length=255, help_text=u'开发者ID', db_index=True)
     app_secret = models.CharField(_(u'app_secret'), max_length=255, help_text=u'开发者密钥', db_index=True)
     template_id = models.CharField(_(u'template_id'), max_length=255, help_text=u'模板ID', db_index=True)
