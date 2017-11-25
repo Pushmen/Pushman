@@ -22,7 +22,7 @@ class WeChatTemplateInfoAdmin(ReadonlyModelAdmin, admin.ModelAdmin):
 
 
 class WeChatTemplateReceiverInfoAdmin(admin.ModelAdmin):
-    list_display = ('receiver_id', 'wepush_id', 'openid', 'status', 'created_at', 'updated_at')
+    list_display = ('receiver_id', 'receiver_remark', 'wepush_id', 'openid', 'status', 'created_at', 'updated_at')
     list_filter = ('wepush_id', 'status')
 
     def save_model(self, request, obj, form, change):

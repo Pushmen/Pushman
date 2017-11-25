@@ -27,6 +27,7 @@ class WeChatTemplateInfo(CreateUpdateMixin):
 
 class WeChatTemplateReceiverInfo(CreateUpdateMixin):
     receiver_id = ShortUUIDField(_(u'receiver_id'), max_length=32, help_text=u'接收人唯一标识', db_index=True, unique=True)
+    receiver_remark = models.CharField(_(u'receiver_remark'), max_length=32, blank=True, null=True, help_text=u'接收人备注')
     wepush_id = models.CharField(_(u'wepush_id'), max_length=32, help_text=u'模板唯一标识', db_index=True)
     openid = models.CharField(_(u'openid'), max_length=255, blank=True, null=True, help_text=u'接受者Openid', db_index=True)
 
