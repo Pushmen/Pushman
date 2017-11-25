@@ -72,7 +72,7 @@ def send_tplmsg(request):
             'color': color,
         },
         'time': {
-            'value': data.get('time', tc.local_string()),
+            'value': data.get('time', tc.local_string()) or tc.local_string(),
             'color': color,
         },
         'remark': {
