@@ -222,7 +222,7 @@ WECHAT_UNIQUE_IDENTIFICATION = 'unionid'
 # Token 错误重授权设置
 TOKEN_CHECK_KEY = 'user_id'
 WECHAT_OAUTH2_REDIRECT_ENTRY = '/page/oauth'
-WECHAT_OAUTH2_REDIRECT_URL = 'http://qmscds.kdxyx.com/we/o?redirect_url=http%3A%2F%2Fhpsgift.hphcclub.com%2Fapi%2For&direct_redirect=true'
+WECHAT_OAUTH2_REDIRECT_URL = 'http://a.com/we/o?r=http%3A%2F%2Fa.com%2Fapi%2For&dr=true'
 
 # 邮件设置
 # https://docs.djangoproject.com/en/1.11/howto/error-reporting/#email-reports
@@ -273,7 +273,8 @@ except ImportError:
 
 # 依赖 local_settings 中的配置
 # 微信授权设置
-WECHAT_OAUTH2_REDIRECT_URI = '{0}/we/oauth2?scope={{0}}&redirect_url={{1}}'.format(DOMAIN)
+# WECHAT_OAUTH2_REDIRECT_URI = '{0}/we/oauth2?scope={{0}}&redirect_url={{1}}'.format(DOMAIN)
+WECHAT_OAUTH2_REDIRECT_URI = '{0}/we/oauth2?scope={{0}}&r={{1}}'.format(DOMAIN)  # Shorten URL
 WECHAT_BASE_REDIRECT_URI = '{0}/we/base_redirect'.format(DOMAIN)
 WECHAT_USERINFO_REDIRECT_URI = '{0}/we/userinfo_redirect'.format(DOMAIN)
 
@@ -284,7 +285,7 @@ try:
         'level': 'DEBUG',
         'class': 'rlog.RedisListHandler',
         'redis_client': REDIS_CACHE,
-        'key': 'django:logit:rebate',
+        'key': 'django:logit:pushman',
         'formatter': 'verbose',
     }
 except ImportError:
@@ -292,7 +293,7 @@ except ImportError:
     DJLOGIT = {
         'level': 'DEBUG',
         'class': 'logging.FileHandler',
-        'filename': '/tmp/rebate.logit.log',
+        'filename': '/tmp/pushman.logit.log',
         'formatter': 'verbose',
     }
 
