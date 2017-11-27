@@ -6,11 +6,11 @@
   ```doc
   {{first.DATA}}
 
-  服务器IP：{{ip.DATA}}
-  故障类别：{{type.DATA}}
-  故障描述：{{descr.DATA}}
-  故障详情：{{detail.DATA}}
-  故障时间：{{time.DATA}}
+  关键字1：{{keyword1.DATA}}
+  关键字2：{{keyword2.DATA}}
+  关键字3：{{keyword3.DATA}}
+  关键字4：{{keyword4.DATA}}
+  关键字5：{{keyword5.DATA}}
 
   {{remark.DATA}}
   ```

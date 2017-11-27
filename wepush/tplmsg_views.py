@@ -57,27 +57,27 @@ def send_tplmsg(request):
     color = data.get('color', u'#173177')
     tpl_data = {
         'first': {
-            'value': data.get('title', u'服务器故障'),
+            'value': data.get('first') or data.get('title', u'服务器故障'),
             'color': color,
         },
-        'ip': {
-            'value': data.get('ip', '127.0.0.1'),
+        'keyword1': {
+            'value': data.get('keyword1') or data.get('ip', '127.0.0.1'),
             'color': color,
         },
-        'type': {
-            'value': data.get('type', u'服务器故障'),
+        'keyword2': {
+            'value': data.get('keyword2') or data.get('type', u'服务器故障'),
             'color': color,
         },
-        'descr': {
-            'value': data.get('descr', u'服务器故障'),
+        'keyword3': {
+            'value': data.get('keyword3') or data.get('descr', u'服务器故障'),
             'color': color,
         },
-        'detail': {
-            'value': data.get('detail', u'服务器故障'),
+        'keyword4': {
+            'value': data.get('keyword4') or data.get('detail', u'服务器故障'),
             'color': color,
         },
-        'time': {
-            'value': data.get('time', tc.local_string()) or tc.local_string(),
+        'keyword5': {
+            'value': data.get('keyword5') or data.get('time', tc.local_string()) or tc.local_string(),
             'color': color,
         },
         'remark': {
