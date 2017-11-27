@@ -195,18 +195,6 @@ WECHAT = {
 
         }
     },
-    'HPHCCLUB': {
-        'token': '5201314',
-        'appID': '',
-        'appsecret': '',
-        'mchID': '',
-        'apiKey': '',
-        'mch_cert': '',
-        'mch_key': '',
-        'redpack': {
-
-        }
-    },
 }
 
 # 微信唯一标识
