@@ -4,7 +4,7 @@ import requests
 
 
 def fetch_access_token(token_url, token_key=None):
-    if token_url:
+    if not token_url:
         return
 
     try:
