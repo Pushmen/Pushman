@@ -11,7 +11,7 @@ from pywe_sign import fill_signature
 from wepush.models import WeChatTemplateInfo
 
 
-def send_tplmsg(push_id):
+def send_tplmsg(push_id, openid=None):
     tpl = WeChatTemplateInfo.objects.get(wepush_id=push_id)
 
     data = {
@@ -24,11 +24,12 @@ def send_tplmsg(push_id):
         'time': '',
         'remark': u'请尽快充值！',
         'color': '#173177',
+        'openids': json.dumps([openid] if openid else []),
     }
 
     data = fill_signature(data, tpl.wepush_secret)
 
-    requrl = '{}/api/send/tplmsg?text={}'.format(settings.DOMAIN, urllib.quote_plus(json.dumps(data)))
+    requrl = '{0}/api/send/tplmsg?text={1}'.format(settings.DOMAIN, urllib.quote_plus(json.dumps(data)))
     print requrl
 
     print requests.get(requrl).json()

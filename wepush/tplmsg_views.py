@@ -18,7 +18,7 @@ from wepush.models import (WeChatTemplateInfo, WeChatTemplateMessageRequestLogIn
 
 
 def send_tplmsg(request):
-    """ push_id + title/ip/type/descr/detail/time/remark/color + sign """
+    """ push_id + title/ip/type/descr/detail/time/remark/color/openids + sign """
     text = request.POST.get('text', '') or request.GET.get('text', '')
 
     if not text:
@@ -45,9 +45,14 @@ def send_tplmsg(request):
         reqlog.save()
         return response(SignatureStatusCode.SIGNATURE_ERROR)
 
-    receivers = WeChatTemplateReceiverInfo.objects.filter(wepush_id=tpl.wepush_id)
-    if not receivers.exists():
-        return response(WeChatTemplateStatusCode.RECEIVER_NOT_FOUND)
+    # 调用方指定接收入
+    openids = json.loads(data.get('openids', '[]'))
+    if not openids:
+        # Pushman 配置接收入
+        receivers = WeChatTemplateReceiverInfo.objects.filter(wepush_id=tpl.wepush_id)
+        openids = [receiver.openid for receiver in receivers]
+        if not openids:
+            return response(WeChatTemplateStatusCode.RECEIVER_NOT_FOUND)
 
     color = data.get('color', u'#173177')
     tpl_data = {
@@ -84,14 +89,14 @@ def send_tplmsg(request):
     tplmsg = TemplateMessage(appid=tpl.app_id, secret=tpl.app_secret, token=fetch_access_token(tpl.token_url, tpl.token_key), storage=RedisStorage(r))
 
     success = failure = 0
-    for receiver in receivers:
-        msgres = tplmsg.send_template_message(user_id=receiver.openid, template_id=tpl.template_id, data=tpl_data, url=data.get('url', None))
+    for openid in openids:
+        msgres = tplmsg.send_template_message(user_id=openid, template_id=tpl.template_id, data=tpl_data, url=data.get('url', None))
         # Success Or Not
         send_status = msgres['errcode'] == 0
         # TPL Send Log
         WeChatTemplateMessageSendLogInfo.objects.create(
             wepush_id=wepush_id,
-            openid=receiver.openid,
+            openid=openid,
             send_msgres=msgres,
             send_status=send_status,
         )
