@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 import json
 
+from django_response import response
 from ipaddr import client_ip
 from pywe_sign import check_signature
 from pywe_storage import RedisStorage
@@ -10,7 +11,6 @@ from pywe_template_message import TemplateMessage
 from TimeConvert import TimeConvert as tc
 
 from utils.error.errno_utils import SignatureStatusCode, WeChatTemplateStatusCode
-from utils.error.response_utils import response
 from utils.redis.connect import r
 from utils.we.access_token import fetch_access_token
 from wepush.models import (WeChatTemplateInfo, WeChatTemplateMessageRequestLogInfo, WeChatTemplateMessageSendLogInfo,
