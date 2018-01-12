@@ -267,8 +267,8 @@ WECHAT_BASE_REDIRECT_URI = '{0}/we/base_redirect'.format(DOMAIN)
 WECHAT_USERINFO_REDIRECT_URI = '{0}/we/userinfo_redirect'.format(DOMAIN)
 
 try:
-    from func_settings import redis_connect
-    REDIS_CACHE = redis_connect(REDIS.get('default', {}))
+    from django_redis_connector import connector
+    REDIS_CACHE = connector(REDIS.get('default', {}))
     DJLOGIT = {
         'level': 'DEBUG',
         'class': 'rlog.RedisListHandler',
