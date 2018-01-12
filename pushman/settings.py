@@ -14,6 +14,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+from django_redis_connector import connector
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -266,24 +268,14 @@ WECHAT_OAUTH2_REDIRECT_URI = '{0}/we/oauth2?scope={{0}}&r={{1}}'.format(DOMAIN) 
 WECHAT_BASE_REDIRECT_URI = '{0}/we/base_redirect'.format(DOMAIN)
 WECHAT_USERINFO_REDIRECT_URI = '{0}/we/userinfo_redirect'.format(DOMAIN)
 
-try:
-    from django_redis_connector import connector
-    REDIS_CACHE = connector(REDIS.get('default', {}))
-    DJLOGIT = {
-        'level': 'DEBUG',
-        'class': 'rlog.RedisListHandler',
-        'redis_client': REDIS_CACHE,
-        'key': 'django:logit:pushman',
-        'formatter': 'verbose',
-    }
-except ImportError:
-    REDIS_CACHE = None
-    DJLOGIT = {
-        'level': 'DEBUG',
-        'class': 'logging.FileHandler',
-        'filename': '/tmp/pushman.logit.log',
-        'formatter': 'verbose',
-    }
+REDIS_CACHE = connector(REDIS.get('default', {}))
+DJLOGIT = {
+    'level': 'DEBUG',
+    'class': 'rlog.RedisListHandler',
+    'redis_client': REDIS_CACHE,
+    'key': 'django:logit:pushman',
+    'formatter': 'verbose',
+}
 
 # logger 设置
 LOGGING = {
