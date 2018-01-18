@@ -40,9 +40,9 @@ class WeChatTemplateMessageRequestLogInfoAdmin(AdvancedExportExcelModelAdmin, Re
 
 
 class WeChatTemplateMessageSendLogInfoAdmin(AdvancedExportExcelModelAdmin, ReadOnlyModelAdmin, admin.ModelAdmin):
-    list_display = ('send_id', 'wepush_id', 'openid', 'send_msgres', 'send_status', 'status', 'created_at', 'updated_at')
+    list_display = ('send_id', 'request_id', 'wepush_id', 'openid', 'send_msgres', 'send_status', 'status', 'created_at', 'updated_at')
     list_filter = ('wepush_id', 'send_status', 'status')
-    search_fields = ('send_id', 'wepush_id', 'openid', 'send_msgres')
+    search_fields = ('send_id', 'request_id', 'wepush_id', 'openid', 'send_msgres')
 
 
 admin.site.register(WeChatTemplateInfo, WeChatTemplateInfoAdmin)

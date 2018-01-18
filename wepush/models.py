@@ -55,6 +55,7 @@ class WeChatTemplateMessageRequestLogInfo(BaseModelMixin):
 
 class WeChatTemplateMessageSendLogInfo(BaseModelMixin):
     send_id = ShortUUIDField(_(u'send_id'), max_length=32, help_text=u'发送唯一标识', db_index=True, unique=True)
+    request_id = models.CharField(_(u'request_id'), max_length=32, blank=True, null=True, help_text=u'请求唯一标识', db_index=True)
     wepush_id = models.CharField(_(u'wepush_id'), max_length=32, help_text=u'模板唯一标识', db_index=True)
     openid = models.CharField(_(u'openid'), max_length=255, blank=True, null=True, help_text=u'接受者Openid', db_index=True)
     send_msgres = models.TextField(_(u'send_msgres'), blank=True, null=True, help_text=u'发送回执')
