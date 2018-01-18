@@ -1,4 +1,4 @@
-Django==1.11.6
+Django==1.11.9
 StatusCode==1.0.0
 django-admin==1.1.1
 django-ip==1.0.2
