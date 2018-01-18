@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_uniapi',
     'django_we',
+    'djadmin',
     'api',
     'wepush',
 ]
