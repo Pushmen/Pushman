@@ -96,6 +96,7 @@ def send_tplmsg(request):
         # TPL Send Log
         WeChatTemplateMessageSendLogInfo.objects.create(
             wepush_id=wepush_id,
+            request_id=reqlog.request_id,
             openid=openid,
             send_msgres=msgres,
             send_status=send_status,
