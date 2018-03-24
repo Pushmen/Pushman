@@ -16,12 +16,12 @@ def send_tplmsg(push_id, openid=None):
 
     data = {
         'push_id': push_id,
-        'title': u'提现故障',
-        'ip': '127.0.0.1',
-        'type': u'微信提现',
-        'descr': u'余额发放失败',
-        'detail': u'余额不足，错误码: NOTENOUGH',
-        'time': '',
+        'first': u'提现故障',
+        'keyword1': '127.0.0.1',
+        'keyword2': u'微信提现',
+        'keyword3': u'余额发放失败',
+        'keyword4': u'余额不足，错误码: NOTENOUGH',
+        'keyword5': '',
         'remark': u'请尽快充值！',
         'color': '#173177',
         'openids': json.dumps([openid] if openid else []),
