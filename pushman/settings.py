@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_uniapi',
+    'django_admin',
     'django_we',
-    'djadmin',
     'api',
     'wepush',
 ]

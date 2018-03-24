@@ -2,7 +2,7 @@
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from models_ext import BaseModelMixin
+from django_models_ext import BaseModelMixin
 from shortuuidfield import ShortUUIDField
 
 

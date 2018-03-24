@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from djadmin import AdvancedExportExcelModelAdmin, ReadonlyModelAdmin, ReadOnlyModelAdmin
 from django.contrib import admin
+from django_admin import AdvancedExportExcelModelAdmin, ReadonlyModelAdmin, ReadOnlyModelAdmin
 from pysnippets.strsnippets import strip
 
 from wepush.models import (WeChatTemplateInfo, WeChatTemplateMessageRequestLogInfo, WeChatTemplateMessageSendLogInfo,
