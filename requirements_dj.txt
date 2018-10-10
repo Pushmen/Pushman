@@ -1,0 +1,10 @@
+Django==1.11.15
+django-admin==1.3.2
+django-ip==1.0.2
+django-models-ext==1.1.6
+django-redis-connector==1.0.1
+django-response==1.1.1
+django-rlog==1.0.7
+django-shortuuidfield==0.1.3
+django-uniapi==1.0.5
+django-we==1.4.2

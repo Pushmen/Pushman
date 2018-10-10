@@ -1,0 +1,1 @@
+pywe-template-message==1.0.0
